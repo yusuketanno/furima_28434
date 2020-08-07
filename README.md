@@ -48,15 +48,15 @@ Things you may want to cover:
 
 | Column        | Type       | Options                        |
 | ------        | ---------- | ------------------------------ |
-| image         | references | null: false                    |
+| image         | string     | null: false                    |
 | name          | string     | null: false                    |
-| explanation   | string     | null:false                     |
-| category      | string     | null:false                     |
-| item_status   | string     | null:false                     |
-| delivery_fee  | string     | null:false                     |
-| delivery_area | string     | null:false                     |
-| delivery_date | string     | null:false                     |
-| price         | string     | null:false                     |
+| explanation   | text       | null:false                     |
+| category      | integer    | null:false                     |
+| item_status   | integer    | null:false                     |
+| delivery_fee  | integer    | null:false                     |
+| delivery_area | integer    | null:false                     |
+| delivery_date | integer    | null:false                     |
+| price         | integer    | null:false                     |
 
    Assosiation
 
@@ -65,13 +65,27 @@ Things you may want to cover:
 
   purchasesテーブル
 
-|   Column  | Type       | Options                        |
-|  -------  | ---------- | ------------------------------ |
-|  delivery | string     | null: false, foreign_key: true |
-|  users_id | string     | null: false, foreign_key: true |
-|  items_id | string     | null: false, foreign_key: true |
+|   Column    | Type       | Options                        |
+|  -------    | ---------- | ------------------------------ |
+|  users_id   | string     | null: false, foreign_key: true |
+|  items_id   | string     | null: false, foreign_key: true |
 
-   Assosiation
+ Assosiation
 
-belongs_to :users
-belongs_to :items
+- belongs_to :users
+- belongs_to :items
+- has_one :address
+
+  addressテーブル
+
+|   Column    | Type       | Options                        |
+|  ---------  | ---------- | ------------------------------ |
+| postal_code | integer    | null:false                     |
+| prefectures | string     | null:false                     |
+| city        | string     | null:false                     |
+| address     | integer    | null:false                     |
+| building    | string     | null:true                      |
+| tell        | integer    | null:false                     |
+
+  Assosiation
+- belongs_to :purchases
