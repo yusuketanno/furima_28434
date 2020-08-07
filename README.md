@@ -57,7 +57,7 @@ Things you may want to cover:
 | delivery_area | integer    | null:false                     |
 | delivery_date | integer    | null:false                     |
 | price         | integer    | null:false                     |
-| users_id      | integer    | null:false, foreign_key: true  |
+| user_id       | integer    | null:false, foreign_key: true  |
 
    Assosiation
 
@@ -68,8 +68,8 @@ Things you may want to cover:
 
 |   Column    | Type       | Options                        |
 |  -------    | ---------- | ------------------------------ |
-|  users_id   | integer    | null: false, foreign_key: true |
-|  items_id   | integer    | null: false, foreign_key: true |
+|  user_id    | integer    | null: false, foreign_key: true |
+|  item_id    | integer    | null: false, foreign_key: true |
 
  Assosiation
 
@@ -82,12 +82,12 @@ Things you may want to cover:
 |   Column     | Type       | Options                        |
 |  ---------   | ---------- | ------------------------------ |
 | postal_code  | string     | null:false                     |
-| prefectures  | string     | null:false                     |
+| prefectures  | integer    | null:false                     |
 | city         | string     | null:false                     |
-| address      | integer    | null:false                     |
+| address      | stringb    | null:false                     |
 | building     | string     |                                |
 | tell         | string     | null:false                     |
-| purchases_id | integer    | null:false, foreign_key: true  |
+| purchase_id  | integer    | null:false, foreign_key: true  |
 
   Assosiation
 - belongs_to :purchase
