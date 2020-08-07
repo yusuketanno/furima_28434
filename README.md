@@ -84,7 +84,7 @@ Things you may want to cover:
 | postal_code  | string     | null:false                     |
 | prefectures  | integer    | null:false                     |
 | city         | string     | null:false                     |
-| address      | stringb    | null:false                     |
+| address      | string     | null:false                     |
 | building     | string     |                                |
 | tell         | string     | null:false                     |
 | purchase_id  | integer    | null:false, foreign_key: true  |
