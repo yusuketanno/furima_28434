@@ -42,7 +42,7 @@ Things you may want to cover:
 
 - has_many :furima_users
 - has_many :items, through: furima_users
-- has_one :purchases
+- has_one :purchase
 
   itemsテーブル
 
@@ -57,35 +57,37 @@ Things you may want to cover:
 | delivery_area | integer    | null:false                     |
 | delivery_date | integer    | null:false                     |
 | price         | integer    | null:false                     |
+| users_id      | integer    | null:false, foreign_key: true  |
 
    Assosiation
 
-- has_one :purchases
-- belongs_to :users
+- has_one :purchase
+- belongs_to :user
 
   purchasesテーブル
 
 |   Column    | Type       | Options                        |
 |  -------    | ---------- | ------------------------------ |
-|  users_id   | string     | null: false, foreign_key: true |
-|  items_id   | string     | null: false, foreign_key: true |
+|  users_id   | integer    | null: false, foreign_key: true |
+|  items_id   | integer    | null: false, foreign_key: true |
 
  Assosiation
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 - has_one :address
 
   addressテーブル
 
-|   Column    | Type       | Options                        |
-|  ---------  | ---------- | ------------------------------ |
-| postal_code | integer    | null:false                     |
-| prefectures | string     | null:false                     |
-| city        | string     | null:false                     |
-| address     | integer    | null:false                     |
-| building    | string     | null:true                      |
-| tell        | integer    | null:false                     |
+|   Column     | Type       | Options                        |
+|  ---------   | ---------- | ------------------------------ |
+| postal_code  | string     | null:false                     |
+| prefectures  | string     | null:false                     |
+| city         | string     | null:false                     |
+| address      | integer    | null:false                     |
+| building     | string     |                                |
+| tell         | string     | null:false                     |
+| purchases_id | integer    | null:false, foreign_key: true  |
 
   Assosiation
-- belongs_to :purchases
+- belongs_to :purchase
