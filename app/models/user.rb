@@ -4,17 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  class Account < ActiveRecord: :Base
-    with_options presence: true do |assoc|
-      assoc.validates :nickname
-      assoc.validates :email, uniqueness: true, 
-                              inclusion: { in: @ }
-      assoc.validates :password, /^(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{6,}$/
-      assoc.validates :family_name, /\A[ぁ-んァ-ン一-龥]/
-      assoc.validates :first_name, /\A[ぁ-んァ-ン一-龥]/
-      assoc.validates :family_name_kana, /\A[ァ-ヶー－]+\z/
-      assoc.validates :first_name_kana, /\A[ァ-ヶー－]+\z/
-      assoc.validates :birthday
+    with_options presence: true do
+      validates :nickname
+      validates :email, uniqueness: true, 
+                        format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
+      validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{6,}\z/ }
+      validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+      validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+      validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+      validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+      validates :birthday
     end
-  end
 end
