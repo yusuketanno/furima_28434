@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Item, type: :model do
+RSpec.describe Item , type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
@@ -36,32 +36,37 @@ RSpec.describe Item, type: :model do
       it "商品状態の情報がないと出品できない" do
         @item.item_status = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item_status can't be blank")
+        expect(@item.errors.full_messages).to include("Item status can't be blank")
       end
       it "配送料負担の情報がないと出品できない" do
         @item.delivery_fee = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery_fee can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
       it "発送元地域の情報がないと出品できない" do
         @item.delivery_area = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery_area can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery area can't be blank")
       end
       it "発送までの日数の情報がないと出品できない" do
         @item.delivery_date = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery_date can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery date can't be blank")
       end
       it "価格の情報がないと出品できない" do
         @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
-      it "価格の範囲が¥300~¥9,999,999の間にない時" do
-        @item.price :numericality => { :greater_than_or_equal_to => 300, :less_than_or_equal_to => 9,999,999 }
+      it "価格が¥300より小さい時出品できない" do
+        @item.price 
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is wrong range")
+        expect(@item.errors.full_messages).to include()
+      end
+      it "価格が¥9,999,999より大きい時出品できない" do
+        @item.price
+        @item.valid?
+        expect(@item.errors.full_messages).to include()
       end
     end
   end
