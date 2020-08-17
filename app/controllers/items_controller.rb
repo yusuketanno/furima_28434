@@ -6,6 +6,10 @@ class ItemsController < ApplicationController
   def create
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
   private
 
   def user_params
