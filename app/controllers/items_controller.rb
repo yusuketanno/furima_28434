@@ -1,22 +1,5 @@
 class ItemsController < ApplicationController
-
-  def new
+  def index
+    @items = Item.all.order("created_at DESC")
   end
-
-  def create
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:nickname, :email, :password)
-  end
-
-  
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
-  end
-
 end

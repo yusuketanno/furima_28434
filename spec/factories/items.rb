@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :item do
+
     image                 {"image"}
     name                  {"test123"}
     explanation           {"test"}
@@ -10,5 +11,6 @@ FactoryBot.define do
     delivery_date         {"5"}
     price                 {"1000"}
     user_id               {"7"}
+
   end
 end

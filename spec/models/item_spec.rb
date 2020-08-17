@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 RSpec.describe Item , type: :model do
   before do
     @item = FactoryBot.build(:item)
@@ -70,4 +71,5 @@ RSpec.describe Item , type: :model do
       end
     end
   end
+
 end
