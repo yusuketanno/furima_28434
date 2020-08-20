@@ -1,13 +1,19 @@
 class ItemsController < ApplicationController
   
-  before_action :authenticate_user!, only: [:create, :edit]
+  
 
   def index
     @items = Item.all.order("created_at DESC")
   end
 
+  def new
+    unless user_signed_in?
+      redirect_to "/users/sign_in"
+    end
+  end
 
   def create
+    
   end
 
   def edit
