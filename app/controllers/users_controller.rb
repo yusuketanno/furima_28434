@@ -1,7 +1,20 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :configure_permitted_parameters, if: :devise_controller？
+  
   before_action :basic_auth
+
+  def new
+    @user = User.new
+    render "devise/registrations/new"
+  end
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      render 'index'
+    else
+      render 'new'
+    end
+  end
 
   def edit
   end
@@ -27,9 +40,5 @@ class UsersController < ApplicationController
     end
   end
 
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
-  end
+  
 end
