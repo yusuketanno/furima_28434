@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+    has_one :purchase
+    has_many :items
+    has_many :furima_users
+
     with_options presence: true do
       validates :nickname
       validates :email, uniqueness: true, 
