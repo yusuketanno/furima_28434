@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
 
   def destroy
     
-    unless item.destroy
+    unless @item.destroy
       redirect_to item_path
     else
       redirect_to items_path
