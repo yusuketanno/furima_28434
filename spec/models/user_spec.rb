@@ -66,12 +66,12 @@ RSpec.describe User , type: :model do
       it "ユーザー本名の名字は全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
         @user.family_name = "/\A[ぁ-んァ-ン一-龥]/"
         @user.valid?
-        expect(@user.errors.full_messages).to include{"Family_name must be /\A[ぁ-んァ-ン一-龥]/"}
+        expect(@user.errors.full_messages).to include{"Family_name Full-width characters"}
       end
       it "ユーザー本名の名前は全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
         @user.first_name = "/\A[ぁ-んァ-ン一-龥]/"
         @user.valid?
-        expect(@user.errors.full_messages).to include{"First_name must be /\A[ぁ-んァ-ン一-龥]/"}
+        expect(@user.errors.full_messages).to include{"First_name Full-width characters"}
       end
       it "ユーザー本名のフリガナは、名字がなければ登録できない" do
         @user.family_name_kana = ""
@@ -84,12 +84,12 @@ RSpec.describe User , type: :model do
       it "ユーザー本名の名字のフリガナがは全角（カタカナ）でなければ登録できない" do
         @user.family_name_kana = "/\A[ァ-ヶー－]+\z/"
         @user.valid?
-        expect(@user.errors.full_messages).to include{"Family_name_kana must be /\A[ァ-ヶー－]+\z/"}
+        expect(@user.errors.full_messages).to include{"Family_name_kana Full-width katakana characters"}
       end
       it "ユーザー本名の名字のフリガナがは全角（カタカナ）でなければ登録できない" do
         @user.first_name_kana = "/\A[ァ-ヶー－]+\z/"
         @user.valid?
-        expect(@user.errors.full_messages).to include{"First_name_kana must be /\A[ァ-ヶー－]+\z/"}
+        expect(@user.errors.full_messages).to include{"First_name_kana Full-width katakana characters"}
       end
       it "生年月日が空だと登録できない" do
         @user.birthday = ""
