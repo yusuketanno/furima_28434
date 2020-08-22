@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   
-  
+  before_action :set_item, only: [:show, :edit]
+  before_action :sets_item, only: [:update, :destroy]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -55,7 +56,14 @@ class ItemsController < ApplicationController
     .merge(user_id: current_user.id)
   end
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
   
+  def sets_item
+    item = Item.find(params[:id])
+  end
+
   protected
 
   def configure_permitted_parameters
