@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   
   before_action :basic_auth
 
@@ -30,9 +31,9 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:nickname, :email, :password)
-  end
+  # def user_params
+  #   params.require(:user).permit(:nickname, :email, :password)
+  # end
 
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
@@ -41,4 +42,3 @@ class UsersController < ApplicationController
   end
 
   
-end
