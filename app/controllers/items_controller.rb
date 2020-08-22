@@ -24,7 +24,20 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    item.update(item_params)
+    unless item.update(item_params)
+      redirect_to edit_item_path
+    else
+      redirect_to items_path
+    end
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    unless item.destroy
+      redirect_to item_path
+    else
+      redirect_to items_path
+    end
   end
 
   private
