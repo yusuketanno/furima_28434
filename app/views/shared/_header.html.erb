@@ -18,12 +18,12 @@
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐させましょう%>
         <% if user_signed_in? %>
           <div class="user_sign_in">
-           <li><%= link_to current_user.nickname, "new_user_path", class: "user-nickname" %></li>
-           <li><%= link_to 'ログアウト', "/users/sign_out", method: :delete, class: "logout" %></li>
+           <li><%= link_to current_user.nickname, new_user_path, method: :get, class: "user-nickname" %></li>
+           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
           </div>
         <% else %>
-          <li><%= link_to 'ログイン', "/users/sign_in", class: "login" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+          <li><%= link_to 'ログイン', user_session_path, method: :get, class: "login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, method: :get, class: "sign-up" %></li>
         <% end %>
       <%# //deviseを導入できたら、ログインの有無で表示が変わるように分岐させましょう%>
     </ul>
