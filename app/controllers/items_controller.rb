@@ -9,13 +9,13 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     unless user_signed_in?
-      redirect_to "/users/sign_in"
+      redirect_to new_user_session_path
     end
   end
 
   def create
     @item = Item.create!(item_params)
-    redirect_to "/items"
+    redirect_to items_path
   end
 
   def edit
@@ -24,7 +24,11 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    item.update(item_params)
+    unless item.update(item_params)
+      redirect_to edit_item_path
+    else
+      redirect_to items_path
+    end
   end
 
   private
