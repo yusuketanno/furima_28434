@@ -86,7 +86,6 @@
 
       <%# 販売価格 %>
         <div class="sell-price">
-          <script src="items.js"></script>
           <div class="weight-bold-text question-text">
             <span>販売価格<br>(¥300〜9,999,999)</span>
             <a class="question" href="#">?</a>
@@ -101,6 +100,7 @@
               <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
             </div>
             <div class="price-content">
+            <script src="items.js"></script>
               <span>販売手数料 (10%)</span>
               <span>
                 <span id='add-tax-price'></span>円
