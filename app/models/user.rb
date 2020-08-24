@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
     has_one :purchase
     has_many :items
-    has_many :furima_users
 
     with_options presence: true do
       validates :nickname
