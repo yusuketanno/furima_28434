@@ -4,13 +4,14 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+//require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("../card")    //追加
 require('jquery')
 require("./sales_commission")
 require("./sales_profit")
-require('../items')
+require('./items')
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
