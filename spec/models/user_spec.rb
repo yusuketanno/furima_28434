@@ -30,9 +30,9 @@ RSpec.describe User , type: :model do
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
       it "emailに@が含まれていなければ登録できない" do
-        @user.email = "/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i"
+        @user.email = "1234gmail.com"
         @user.valid?
-        expect(@user.errors.full_messages).to include{"email must be /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i"}
+        expect(@user.errors.full_messages).to include{"Email must have @"}
       end
       it "passwordが空では登録できない" do
         @user.password = ""
@@ -51,9 +51,9 @@ RSpec.describe User , type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it "passwordが半角英数字混合でなければ登録できない" do
-        @user.password = "/\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{6,}\z/"
+        @user.password = "abcdef"
         @user.valid?
-        expect(@user.errors.full_messages).to include{"Password must be /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]{6,}\z/"}
+        expect(@user.errors.full_messages).to include{"Password is wrong"}
       end
       it "ユーザー本名の名字がなければ登録できない" do
         @user.family_name = ""
@@ -64,12 +64,12 @@ RSpec.describe User , type: :model do
         expect(@user.errors.full_messages).to include{"Text can't be blank"}
       end
       it "ユーザー本名の名字は全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
-        @user.family_name = "/\A[ぁ-んァ-ン一-龥]/"
+        @user.family_name = "aaa"
         @user.valid?
         expect(@user.errors.full_messages).to include{"Family_name Full-width characters"}
       end
       it "ユーザー本名の名前は全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
-        @user.first_name = "/\A[ぁ-んァ-ン一-龥]/"
+        @user.first_name = "aaa"
         @user.valid?
         expect(@user.errors.full_messages).to include{"First_name Full-width characters"}
       end
@@ -82,12 +82,12 @@ RSpec.describe User , type: :model do
         expect(@user.errors.full_messages).to include{"Text can't be blank"}
       end
       it "ユーザー本名の名字のフリガナがは全角（カタカナ）でなければ登録できない" do
-        @user.family_name_kana = "/\A[ァ-ヶー－]+\z/"
+        @user.family_name_kana = "aaa"
         @user.valid?
         expect(@user.errors.full_messages).to include{"Family_name_kana Full-width katakana characters"}
       end
       it "ユーザー本名の名字のフリガナがは全角（カタカナ）でなければ登録できない" do
-        @user.first_name_kana = "/\A[ァ-ヶー－]+\z/"
+        @user.first_name_kana = "aaa"
         @user.valid?
         expect(@user.errors.full_messages).to include{"First_name_kana Full-width katakana characters"}
       end
