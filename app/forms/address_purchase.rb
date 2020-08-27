@@ -4,7 +4,7 @@ class AddressPurchase
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building, :tell
 
   with_options presence: true do
-    # validates :postal_code,  format: { with: /\A{3}-\d{4}\z/ }
+    validates :postal_code,  format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :prefecture_id
     validates :city
     validates :address
