@@ -15,6 +15,7 @@ RSpec.describe AddressPurchase, type: :model do
     end
 
     context '商品購入がうまくいかない時' do
+      
       it "郵便番号がないと購入できない" do
         @address_purchase.postal_code = nil
         @address_purchase.valid?
@@ -44,6 +45,11 @@ RSpec.describe AddressPurchase, type: :model do
         @address_purchase.tell = ""
         @address_purchase.valid?
         expect(@address_purchase.errors.full_messages).to include("Tell can't be blank")
+      end
+      it "電話番号にハイフン（-）があるとと購入できない" do
+        @address_purchase.tell = "090-6789-1234"
+        @address_purchase.valid?
+        expect(@address_purchase.errors.full_messages).to include("Tell is invalid")
       end
     end
   end
