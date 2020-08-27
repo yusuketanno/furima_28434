@@ -8,7 +8,7 @@ class AddressPurchase
     validates :prefecture_id
     validates :city
     validates :address
-    validates :tell,         format: { with: /\A(0{1}\d{9,10})\z/ }
+    validates :tell,         format: { maximum: 11 }
     
   end
 
