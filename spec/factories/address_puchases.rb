@@ -6,6 +6,6 @@ FactoryBot.define do
     city           {"東京"}
     address        {"1-1"}
     tell           {"09089899009"}
-    
+    token          {"tok_12as34cv"}
   end
 end

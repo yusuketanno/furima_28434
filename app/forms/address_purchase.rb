@@ -9,6 +9,7 @@ class AddressPurchase
     validates :city
     validates :address
     validates :tell,         format: { with: /\A\d{10,11}\z/ }
+    validates :token
     
   end
 
