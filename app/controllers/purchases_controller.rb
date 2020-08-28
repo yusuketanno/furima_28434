@@ -10,7 +10,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    
     @item = Item.find(params[:item_id])
     @address = AddressPurchase.new(address_params)
     if @address.valid?

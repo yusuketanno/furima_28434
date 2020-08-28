@@ -14,10 +14,10 @@ class AddressPurchase
   end
 
   def save
-    # user = User.create(user_id: user.id)
     Address.create!(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, tell: tell, user_id: user_id, item_id: item_id)
     Purchase.create!(item_id: item_id, user_id: user_id)
   end
 
-
+  
+  validates :prefecture_id, numericality: { other_than: 1 }
 end

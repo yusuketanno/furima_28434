@@ -22,6 +22,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_fee
   belongs_to_active_hash :delivery_area
   belongs_to_active_hash :delivery_date
+  belongs_to_active_hash :prefecture
 
   validates :category, :item_status, :delivery_fee, presence: true
   validates :category_id, :item_status_id, :delivery_fee_id, :delivery_area_id, :delivery_date_id, numericality: { other_than: 1 }
