@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AddressPurchase, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # pending "add some examples to (or delete) #{__FILE__}"
   before do
     @address_purchase = FactoryBot.build(:address_purchase)
   end
