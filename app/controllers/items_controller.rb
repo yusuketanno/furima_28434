@@ -23,11 +23,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
-    
   end
 
   def update
@@ -39,7 +37,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    
     unless @item.destroy
       redirect_to item_path
     else
