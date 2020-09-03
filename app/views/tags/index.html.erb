@@ -1,0 +1,29 @@
+<div class="header">
+  <div class="inner-header">
+    <h1 class="title">
+     TagItem
+    </h1>
+    <li class='new-post'>
+      <%= link_to "New Post", new_item_path, class:"post-btn"%>
+    </li>
+  </div>
+</div>
+
+<div class="main">
+  <div class="message-wrap">
+    <% @items.each do |item|%>
+      <div class="message">
+        <p class="text">
+          <%= item.message %>
+        </p>
+        <ul class="tag">
+          <li class="tag-list">
+            <%item.tags.each do |tag| %>
+              #<%=tag.name%>
+            <%end%>
+          </li>
+        </ul>
+      </div>
+    <%end%>
+  </div>
+</div>
