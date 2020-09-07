@@ -1,16 +1,19 @@
 FactoryBot.define do
   factory :item do
 
-    image                 {"image"}
+    # image                 {"image"}
     name                  {"test123"}
     explanation           {"test"}
-    category              {"1"}
-    item_status           {"2"}
-    delivery_fee          {"3"}
-    delivery_area         {"4"}
-    delivery_date         {"5"}
+    category_id              {"2"}
+    item_status_id           {"2"}
+    delivery_fee_id          {"3"}
+    delivery_area_id         {"4"}
+    delivery_date_id         {"5"}
     price                 {"1000"}
-    user_id               {"7"}
+    association :user
 
+    after(:build) do |item|
+      item.image.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'sample.png')), filename: 'sample.png')
+    end
   end
 end
