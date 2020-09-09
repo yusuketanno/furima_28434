@@ -5,11 +5,5 @@ FactoryBot.define do
     city           {"東京"}
     address        {"1-1"}
     tell           {"09089899009"}
-    # user_id        {1}
-    # item_id        {2}
-
-    # association    :user
-    # association    :item
-    
   end
 end
