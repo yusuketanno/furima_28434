@@ -31,7 +31,6 @@ class PurchasesController < ApplicationController
 
   def address_params
     params.require(:address_purchase).permit(:postal_code, :prefecture_id, :city, :address, :building, :tell, :purchase_id).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
-    
   end
 
   def pay_item
