@@ -28,6 +28,7 @@
 
       <%# ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物のとき表示しましょう。 %>
         <% if user_signed_in? && current_user.id == @item.user_id %>
+          <%= link_to 'コメント一覧', item_messages_path(@item.id), method: :get, class: "comment-index" %>
           <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
             <p class='or-text'>or</p>
           <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
@@ -87,18 +88,15 @@
     <%# /商品の概要 %>
 
     <div class="comment-box">
-      <form>
-        <textarea class="comment-text"></textarea>
+      <%= form_with model: @message do |f| %>
+        <%= f.text_area :text, class: 'comment-text' %>
         <p class="comment-warn">
           相手のことを考え丁寧なコメントを心がけましょう。
           <br>
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
         </p>
-        <button type="submit" class="comment-btn">
-          <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-          <span>コメントする<span>
-        </button>
-      </form>
+          <%= f.submit 'コメントする', class: 'comment-btn' %>
+      <% end %>
     </div>
     <div class="links">
       <a href="#" class="change-item-btn">
