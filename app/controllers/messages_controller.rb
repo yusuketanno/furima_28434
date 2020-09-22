@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
 
-  
+
   def index
     @messages = Message.all.order("created_at DESC")
   end
@@ -13,7 +13,8 @@ class MessagesController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @message = Message.new(message_params)
+    @message = Message.new(text: params[:message][:text])
+    #@message = Message.new(message_params)
     if @message.save
       ActionCable.server.broadcast 'message_channel', content: @message
     end
