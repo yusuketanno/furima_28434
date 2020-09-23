@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_one :purchase
     has_many :items
     has_one :address
+    has_many :messages
 
     with_options presence: true do
       validates :nickname
