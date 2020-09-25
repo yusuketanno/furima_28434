@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
   resources :items do
     resources :purchases, only: [:index, :create]
-    resources :messages, only: [:index, :new, :create]
+    
   end
-  
+  resources :messages, only: [:index, :new, :create]
+
 end
