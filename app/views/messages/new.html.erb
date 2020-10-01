@@ -4,7 +4,7 @@
   <%= f.text_field :text %>
   <%= f.submit 'コメントする' %>
 <% end %>
-<div id='messages'>
+<div id = 'messages'>
   <% @messages.reverse_each do |message| %>
     <p><%= message.text %></p>
   <% end %>
